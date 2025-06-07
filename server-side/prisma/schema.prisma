@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URI")
+}
+
+model User {
+  id String @id @default(cuid())
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  email    String  @unique
+  password String?
+  role     UserRole @default(CUSTOMER)
+
+  name    String @default("Не указано")
+  picture String @default("/uploads/no-user-image.png")
+
+  reviews   Review[]
+  favorites Favorite[]
+  orders    Order[]
+
+  @@map("users")
+}
+
+model Product {
+  id String @id @default(cuid())
+
+  title       String
+  description String
+  price       Decimal
+  images      String[]
+
+  reviews     Review[]
+  orderItems  OrderItem[]
+  favorites   Favorite[]
+
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String   @map("category_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("products")
+}
+
+model Category {
+  id String @id @default(cuid())
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  products Product[]
+
+  title String
+  description String
+
+  @@map("categories")
+}
+
+model Review {
+  id String @id @default(cuid())
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user    User    @relation(fields: [userId], references: [id])
+  userId  String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  text    String
+  rating  Int
+
+  @@map("reviews")
+}
+
+model Order {
+  id String @id @default(cuid())
+
+  status OrderStatus @default(PENDING)
+  items  OrderItem[]
+  total  Decimal
+
+  user    User   @relation(fields: [userId], references: [id])
+  userId  String
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id String @id @default(cuid())
+
+  quantity  Int
+  price     Decimal
+
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("order_items")
+}
+
+model Favorite {
+  user     User    @relation(fields: [userId], references: [id])
+  userId   String
+  product  Product @relation(fields: [productId], references: [id])
+  productId String
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@id([userId, productId])
+  @@map("favorites")
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  REFUNDED
+  PAYED
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
