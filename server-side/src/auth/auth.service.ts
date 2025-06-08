@@ -66,7 +66,7 @@ export class AuthService {
     const { email, name, picture } = userData;
 
     if (!userData) {
-      throw new UnauthorizedException('Пользователь не найден');
+      throw new UnauthorizedException('Ошибка логина через google');
     }
 
     let user = await this.userService.getByEmail(userData.email);
