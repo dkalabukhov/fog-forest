@@ -38,7 +38,7 @@ export class AuthService {
       throw new UnauthorizedException('Неверный пароль');
     }
 
-    const tokens = this.issueTokens(user.id);
+    const tokens = this.issueTokens(user.id, user.role);
 
     return { user, ...tokens };
   }
@@ -51,7 +51,7 @@ export class AuthService {
     }
 
     const user = await this.userService.create(dto);
-    const tokens = this.issueTokens(user.id);
+    const tokens = this.issueTokens(user.id, user.role);
 
     return { user, ...tokens };
   }
@@ -85,7 +85,7 @@ export class AuthService {
       });
     }
 
-    const tokens = this.issueTokens(user.id);
+    const tokens = this.issueTokens(user.id, user.role);
 
     return { user, ...tokens };
   }
@@ -103,13 +103,13 @@ export class AuthService {
       throw new NotFoundException('Пользователь не найден');
     }
 
-    const tokens = this.issueTokens(user.id);
+    const tokens = this.issueTokens(user.id, user.role);
 
     return { user, ...tokens };
   }
 
-  issueTokens(userId: string) {
-    const data = { id: userId };
+  issueTokens(userId: string, role: string) {
+    const data = { id: userId, role };
 
     const accessToken = this.jwt.sign(data, {
       expiresIn: '1h',
