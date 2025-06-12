@@ -4,6 +4,7 @@ import { ICapturePayment, YooCheckout } from '@a2seven/yoo-checkout';
 import { OrderDto } from './dto/order.dto';
 import { PaymentStatusDto } from './dto/paymentStatus.dto';
 import { OrderStatus } from 'generated/prisma';
+import { appendFileSync } from 'fs';
 
 const checkout = new YooCheckout({
   shopId: process.env['YOOKASSA_SHOP_ID']!,
@@ -92,6 +93,7 @@ export class OrdersService {
   }
 
   async updateStatus(dto: PaymentStatusDto) {
+    appendFileSync('ordersService.log', `${JSON.stringify(dto)}\n`);
     if (dto.event === 'payment.waiting_for_capture') {
       const capturePayment: ICapturePayment = {
         amount: {

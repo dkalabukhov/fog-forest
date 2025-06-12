@@ -3,7 +3,6 @@ import { OrdersService } from './orders.service';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { OrderDto } from './dto/order.dto';
 import { CurrentUser } from 'src/users/decorators/user.decorator';
-import { PaymentStatusDto } from './dto/paymentStatus.dto';
 import { Roles } from 'src/access-control/decorators/role.decorator';
 import { Role } from 'src/access-control/enums/role';
 
@@ -20,8 +19,9 @@ export class OrdersController {
 
   @HttpCode(200)
   @Post('status')
-  async updateStatus(@Body() dto: PaymentStatusDto) {
-    return this.ordersService.updateStatus(dto);
+  async updateStatus(@Body() yookassa: any) {
+    // eslint-disable-next-line
+    return this.ordersService.updateStatus(yookassa);
   }
 
   @Get()
