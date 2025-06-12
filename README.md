@@ -1,3 +1,4 @@
-This is a simple online shop, which uses JWT and google auth authentification.
+Минималистический онлайн-магазин fog&forest.
 
-Instructions for installation can be found in both server-side and clint-side folders inside their README.md
+Интструкции для установки и запуска проекта можно найти в README.md
+файлах в папках server-side и client-side.

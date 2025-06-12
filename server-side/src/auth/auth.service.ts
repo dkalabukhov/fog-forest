@@ -5,7 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserService } from 'src/user/user.service';
+import { UsersService } from 'src/users/users.service';
 import { AuthDto } from './dto/auth.dto';
 import { Request, Response } from 'express';
 import { ConfigService } from '@nestjs/config';
@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(
     private jwt: JwtService,
-    private userService: UserService,
+    private usersService: UsersService,
     private prisma: PrismaService,
     private configService: ConfigService,
   ) {}
@@ -44,13 +44,13 @@ export class AuthService {
   }
 
   async register(dto: AuthDto) {
-    const oldUser = await this.userService.getByEmail(dto.email);
+    const oldUser = await this.usersService.getByEmail(dto.email);
 
     if (oldUser) {
       throw new BadRequestException('Пользователь уже существует');
     }
 
-    const user = await this.userService.create(dto);
+    const user = await this.usersService.create(dto);
     const tokens = this.issueTokens(user.id, user.role);
 
     return { user, ...tokens };
@@ -69,7 +69,7 @@ export class AuthService {
       throw new UnauthorizedException('Ошибка логина через google');
     }
 
-    let user = await this.userService.getByEmail(userData.email);
+    let user = await this.usersService.getByEmail(userData.email);
 
     if (!user) {
       user = await this.prisma.user.create({
@@ -97,7 +97,7 @@ export class AuthService {
       throw new UnauthorizedException('Невалидный refresh token');
     }
 
-    const user = await this.userService.getById(result.id);
+    const user = await this.usersService.getById(result.id);
 
     if (!user) {
       throw new NotFoundException('Пользователь не найден');
@@ -123,7 +123,7 @@ export class AuthService {
   }
 
   private async validateUser(dto: AuthDto) {
-    const user = await this.userService.getByEmail(dto.email);
+    const user = await this.usersService.getByEmail(dto.email);
 
     if (!user) {
       throw new NotFoundException('Пользователь не найден');

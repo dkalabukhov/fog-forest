@@ -33,6 +33,7 @@ model Product {
 
   title       String
   description String
+  isAvailable Boolean @default(true)
   price       Decimal
   images      String[]
 
