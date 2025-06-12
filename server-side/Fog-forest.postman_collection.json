@@ -1,0 +1,864 @@
+{
+	"info": {
+		"_postman_id": "0bbffc87-f876-453c-9d2a-a92a1c20ea99",
+		"name": "Fog-forest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45396954"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register a user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"admin\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"Kolobok007\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/register",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"Kolobok007\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/auth/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/auth/login/access-token",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"login",
+								"access-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/auth/logout",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/auth/customer",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/auth/admin",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"auth",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtYm5scHkzeDAwMDF6OTR2ajFrY2wzZG4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MzQ4MDgsImV4cCI6MTc0OTYzODQwOH0.AguOCyGOBhS_K1ap-Sn56UsuE74SblyMMSFhgdsHVvA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/users/profile",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/categories",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get category by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/categories/cmbrtm7om0000z9fj314to7z0",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"categories",
+								"cmbrtm7om0000z9fj314to7z0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtYm5scHkzeDAwMDF6OTR2ajFrY2wzZG4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MzQ4MDgsImV4cCI6MTc0OTYzODQwOH0.AguOCyGOBhS_K1ap-Sn56UsuE74SblyMMSFhgdsHVvA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"С орехами\",\n    \"description\": \"Содержит орехи\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/categories/cmbrtm7om0000z9fj314to7z0",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"categories",
+								"cmbrtm7om0000z9fj314to7z0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtYm5scHkzeDAwMDF6OTR2ajFrY2wzZG4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MzQ4MDgsImV4cCI6MTc0OTYzODQwOH0.AguOCyGOBhS_K1ap-Sn56UsuE74SblyMMSFhgdsHVvA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"С орехами\",\n    \"description\": \"Содержит орехи\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/categories/cmbrtm7om0000z9fj314to7z0",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"categories",
+								"cmbrtm7om0000z9fj314to7z0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtYm5scHkzeDAwMDF6OTR2ajFrY2wzZG4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MzQ4MDgsImV4cCI6MTc0OTYzODQwOH0.AguOCyGOBhS_K1ap-Sn56UsuE74SblyMMSFhgdsHVvA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Варенье\",\n    \"description\": \"Домашнее варенье\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/categories",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Files",
+			"item": [
+				{
+					"name": "Upload files",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/Users/admin/Desktop/fog&forest/Варенье из сосновых шишек/1.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_URL}}/files",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "GetAllWithFilters searchTerm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products?searchTerm=варенье",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "searchTerm",
+									"value": "варенье"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllWithFilters page&limit",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products?page=1&limit=10",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/all",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/cmbs20pyj0006z98r8grtih9h",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"cmbs20pyj0006z98r8grtih9h"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByIdIncludingHidden",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/hidden/cmbs25poy0008z98rahk6zd0n",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"hidden",
+								"cmbs25poy0008z98rahk6zd0n"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/category/cmbs1z2so0004z98ri6pwzhxb",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"cmbs1z2so0004z98ri6pwzhxb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetByCategoryIncludingHidden",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/category/hidden/cmbs1z2so0004z98ri6pwzhxb",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"hidden",
+								"cmbs1z2so0004z98ri6pwzhxb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSimilar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/products/similar/cmbs1qoei0001z98rtds7y7ye",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"similar",
+								"cmbs1qoei0001z98rtds7y7ye"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetSimilar Copy",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Варенье из сосновых шишек\",\n    \"description\": \"Наше домашнее варенье из сосновых шишек — поистине уникальное лакомство с насыщенным, глубоким вкусом, идеально сладким, но освежающе легким, передающим атмосферу соснового леса после дождя.\",\n    \"price\": 419,\n    \"categoryId\": \"cmbtayt7v0000z92kdyjbphpk\",\n    \"images\": [\n        \"/uploads/products/1749727728571-1.jpg\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Варенье из малины\",\n    \"description\": \"Варенье из спелой супер малины\",\n    \"price\": 200,\n    \"categoryId\": \"cmbs1z2so0004z98ri6pwzhxb\",\n    \"images\": [\n        \"/uploads/products/1749651544556-desu.jpg\",\n        \"/uploads/products/1749651544559-girl.jpg\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/cmbs1qoei0001z98rtds7y7ye",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"cmbs1qoei0001z98rtds7y7ye"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ToggleProductVisibility",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Варенье из малины\",\n    \"description\": \"Варенье из спелой супер малины\",\n    \"price\": 200,\n    \"categoryId\": \"cmbs1z2so0004z98ri6pwzhxb\",\n    \"images\": [\n        \"/uploads/products/1749651544556-desu.jpg\",\n        \"/uploads/products/1749651544559-girl.jpg\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/cmbs1qoei0001z98rtds7y7ye",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"cmbs1qoei0001z98rtds7y7ye"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ToggleProductsVisibility",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ids\": [\n        \"cmbs1qoei0001z98rtds7y7ye\",\n        \"cmbs25poy0008z98rahk6zd0n\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/many/visibility",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"many",
+								"visibility"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ids\": [\n        \"cmbs1qoei0001z98rtds7y7ye\",\n        \"cmbs25poy0008z98rahk6zd0n\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/cmbs1qoei0001z98rtds7y7ye",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"cmbs1qoei0001z98rtds7y7ye"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Many Products",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ids\": [\n        \"cmbs1ychm0003z98rgdmz8a2m\",\n        \"cmbs20pyj0006z98r8grtih9h\",\n        \"cmbs25poy0008z98rahk6zd0n\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products/many/delete",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products",
+								"many",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "GetAll reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/reviews?page=1&limit=5",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtYm5scHkzeDAwMDF6OTR2ajFrY2wzZG4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MzQ4MDgsImV4cCI6MTc0OTYzODQwOH0.AguOCyGOBhS_K1ap-Sn56UsuE74SblyMMSFhgdsHVvA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Вери гуд\",\n    \"rating\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/reviews/cmbs6qe570001z9lqosgb3jzi",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"reviews",
+								"cmbs6qe570001z9lqosgb3jzi"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtYm5scHkzeDAwMDF6OTR2ajFrY2wzZG4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MzQ4MDgsImV4cCI6MTc0OTYzODQwOH0.AguOCyGOBhS_K1ap-Sn56UsuE74SblyMMSFhgdsHVvA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/reviews/cmbs6y2b70002z9lq8uw32jpx",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"reviews",
+								"cmbs6y2b70002z9lq8uw32jpx"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtYm5scHkzeDAwMDF6OTR2ajFrY2wzZG4iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk2MzQ4MDgsImV4cCI6MTc0OTYzODQwOH0.AguOCyGOBhS_K1ap-Sn56UsuE74SblyMMSFhgdsHVvA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\n            \"quantity\": 1,\n            \"price\": 419,\n            \"productId\": \"cmbtaze3j0002z92kkdh8xlfc\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/orders/place",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"orders",
+								"place"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/orders",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
