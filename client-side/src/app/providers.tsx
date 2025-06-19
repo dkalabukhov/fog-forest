@@ -1,4 +1,4 @@
-'use-client'
+"use client";
 
 import { useState, type PropsWithChildren } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

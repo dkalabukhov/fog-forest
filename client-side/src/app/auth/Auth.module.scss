@@ -1,0 +1,105 @@
+.authWrapper {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  &__leftSide {
+    background: url('/images/foggy-forest.jpg') no-repeat center/cover;
+  }
+
+  &__rightSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__heading {
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+}
+
+.card {
+  display: flex;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 380px;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+  }
+
+  &__description {
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    padding: 0;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    button {
+      color: #2014cb;
+    }
+
+    button:hover {
+      color: #0b0468
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &__input {
+    width: 100%;
+  }
+
+  &__submitButton {
+    width: 100%;
+    background-color: #363638;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  &__submitButton:hover {
+    background-color: #1f1f20;
+  }
+
+  &__errorMessage {
+    position: absolute;
+    color: #e50b0b;
+    bottom: -1.4rem;
+  }
+}
+
+.social {
+  &__button {
+    width: 100%;
+  }
+
+  &__button:hover {
+    background-color: #1f1f20;
+    color: #fff;
+  }
+
+  &__icon {
+    margin-right: 0.3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .authWrapper {
+    grid-template-columns: 1.3fr 1fr;
+  }
+}

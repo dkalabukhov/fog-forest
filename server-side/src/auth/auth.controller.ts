@@ -24,9 +24,11 @@ export class AuthController {
   @HttpCode(200)
   @Post('login')
   async login(@Body() dto: AuthDto, @Res({ passthrough: true }) res: Response) {
-    const { refreshToken, ...response } = await this.authService.login(dto);
+    const { refreshToken, accessToken, ...response } =
+      await this.authService.login(dto);
 
     this.authService.addRefreshTokenToResponse(res, refreshToken);
+    this.authService.addAcessTokenToResponse(res, accessToken);
 
     return response;
   }
@@ -59,11 +61,11 @@ export class AuthController {
       throw new UnauthorizedException('Refresh токен не прошел');
     }
 
-    const { refreshToken, ...response } = await this.authService.getNewTokens(
-      refreshTokenFromCookies,
-    );
+    const { refreshToken, accessToken, ...response } =
+      await this.authService.getNewTokens(refreshTokenFromCookies);
 
     this.authService.addRefreshTokenToResponse(res, refreshToken);
+    this.authService.addAcessTokenToResponse(res, accessToken);
 
     return response;
   }
@@ -72,6 +74,7 @@ export class AuthController {
   @Post('logout')
   logout(@Res({ passthrough: true }) res: Response) {
     this.authService.removeRefreshTokenFromResponse(res);
+    this.authService.removeAcessTokenFromResponse(res);
     return true;
   }
 
@@ -82,14 +85,13 @@ export class AuthController {
   @Get('google/callback')
   @UseGuards(AuthGuard('google'))
   async googleAuthCallback(@Req() req: any, @Res() res: Response) {
-    const { refreshToken, ...response } =
+    const { refreshToken, accessToken } =
       await this.authService.validateOAuthLogin(req);
 
     this.authService.addRefreshTokenToResponse(res, refreshToken);
+    this.authService.addAcessTokenToResponse(res, accessToken);
 
-    return res.redirect(
-      `${process.env.CLIENT_URL}/dashboard?accessToken=${response.accessToken}`,
-    );
+    return res.redirect(`${process.env.CLIENT_URL}`);
   }
 
   @Get('admin')

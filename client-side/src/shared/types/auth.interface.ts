@@ -1,7 +1,7 @@
 import { IUser } from "./user.interface";
 
 export interface IAuthForm {
-  name: string;
+  name?: string;
   email: string;
   password: string;
 }

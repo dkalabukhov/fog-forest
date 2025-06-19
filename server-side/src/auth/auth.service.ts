@@ -14,8 +14,11 @@ import { verify } from 'argon2';
 
 @Injectable()
 export class AuthService {
-  EXPIRE_DAY_REFRESH_TOKEN = 1;
+  ACCESS_TOKEN_NAME = 'accessToken';
+  EXPIRE_DAY_ACCESS_TOKEN = 1;
+
   REFRESH_TOKEN_NAME = 'refreshToken';
+  EXPIRE_DAY_REFRESH_TOKEN = 7;
 
   constructor(
     private jwt: JwtService,
@@ -112,7 +115,7 @@ export class AuthService {
     const data = { id: userId, role };
 
     const accessToken = this.jwt.sign(data, {
-      expiresIn: '1h',
+      expiresIn: '1d',
     });
 
     const refreshToken = this.jwt.sign(data, {
@@ -145,8 +148,31 @@ export class AuthService {
     });
   }
 
+  addAcessTokenToResponse(res: Response, accessToken: string) {
+    const expiresIn = new Date();
+    expiresIn.setDate(expiresIn.getDate() + this.EXPIRE_DAY_ACCESS_TOKEN);
+
+    res.cookie(this.ACCESS_TOKEN_NAME, accessToken, {
+      httpOnly: true,
+      expires: expiresIn,
+      domain: this.configService.getOrThrow('SERVER_DOMAIN'),
+      secure: true,
+      sameSite: 'none',
+    });
+  }
+
   removeRefreshTokenFromResponse(res: Response) {
     res.cookie(this.REFRESH_TOKEN_NAME, '', {
+      httpOnly: true,
+      expires: new Date(0),
+      domain: this.configService.getOrThrow('SERVER_DOMAIN'),
+      secure: true,
+      sameSite: 'none',
+    });
+  }
+
+  removeAcessTokenFromResponse(res: Response) {
+    res.cookie(this.ACCESS_TOKEN_NAME, '', {
       httpOnly: true,
       expires: new Date(0),
       domain: this.configService.getOrThrow('SERVER_DOMAIN'),
