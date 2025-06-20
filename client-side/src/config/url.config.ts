@@ -37,5 +37,5 @@ export const STORE_URL = {
 
 	reviews: () => STORE_URL.root(`/reviews`),
 
-	settings: () => STORE_URL.root(`/settings`)
+	orders: () => STORE_URL.root(`/orders`),
 }

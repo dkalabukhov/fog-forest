@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  > .layout {
+    > .header {
+      height: 70px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      z-index: 49;
+
+      @media (min-width: 1024px) {
+        padding-left: 16rem; // 64 = 16rem (1rem = 4px)
+      }
+    }
+
+    > .sidebar {
+      display: none;
+      height: 100%;
+      width: 16rem; // 64 = 16rem
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      z-index: 50;
+
+      @media (min-width: 1024px) {
+        display: flex;
+      }
+    }
+
+    > main {
+      padding-top: 70px;
+      background-color: white;
+
+      @media (min-width: 1024px) {
+        padding-left: 16rem;
+      }
+    }
+  }
+}

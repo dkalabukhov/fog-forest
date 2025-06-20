@@ -143,8 +143,8 @@ export class AuthService {
       httpOnly: true,
       expires: expiresIn,
       domain: this.configService.getOrThrow('SERVER_DOMAIN'),
-      secure: true,
-      sameSite: 'none',
+      secure: false,
+      sameSite: 'lax',
     });
   }
 
@@ -156,8 +156,8 @@ export class AuthService {
       httpOnly: true,
       expires: expiresIn,
       domain: this.configService.getOrThrow('SERVER_DOMAIN'),
-      secure: true,
-      sameSite: 'none',
+      secure: false,
+      sameSite: 'lax',
     });
   }
 
@@ -166,8 +166,8 @@ export class AuthService {
       httpOnly: true,
       expires: new Date(0),
       domain: this.configService.getOrThrow('SERVER_DOMAIN'),
-      secure: true,
-      sameSite: 'none',
+      secure: false,
+      sameSite: 'lax',
     });
   }
 
@@ -176,8 +176,8 @@ export class AuthService {
       httpOnly: true,
       expires: new Date(0),
       domain: this.configService.getOrThrow('SERVER_DOMAIN'),
-      secure: true,
-      sameSite: 'none',
+      secure: false,
+      sameSite: 'lax',
     });
   }
 }

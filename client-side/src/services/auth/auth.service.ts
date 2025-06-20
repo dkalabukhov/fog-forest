@@ -4,7 +4,7 @@ import { API_URL } from '@/config/api.config'
 
 import { IAuthForm, IAuthResponse } from '@/shared/types/auth.interface'
 
-import { removeFromStorage, saveTokenStorage } from '@/services/auth/auth-token.service'
+// import { removeFromStorage, saveTokenStorage } from '@/services/auth/auth-token.service'
 
 class AuthService {
 	async main(type: 'login' | 'register', data: IAuthForm) {
@@ -14,8 +14,8 @@ class AuthService {
 			data
 		})
 
-		if (response.data.accessToken)
-			saveTokenStorage(response.data.accessToken)
+		// if (response.data.accessToken)
+		// 	saveTokenStorage(response.data.accessToken)
 
 		return response
 	}
@@ -26,8 +26,8 @@ class AuthService {
 			method: 'POST'
 		})
 
-		if (response.data.accessToken)
-			saveTokenStorage(response.data.accessToken)
+		// if (response.data.accessToken)
+		// 	saveTokenStorage(response.data.accessToken)
 
 		return response
 	}
@@ -38,7 +38,7 @@ class AuthService {
 			method: 'POST'
 		})
 
-		if (response.data) removeFromStorage()
+		// if (response.data) removeFromStorage()
 
 		return response
 	}
