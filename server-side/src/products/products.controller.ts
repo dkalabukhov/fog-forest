@@ -9,6 +9,7 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { Roles } from 'src/access-control/decorators/role.decorator';
@@ -18,6 +19,7 @@ import { QueryGetMostPopularDto } from './dto/queryGetMostPopular.dto';
 import { ProductDto } from './dto/product.dto';
 import { ToggleManyDto } from './dto/toggleMany.dto';
 import { DeleteManyDto } from './dto/deleteMany.dto';
+import { RoleGuard } from 'src/access-control/guards/role.guard';
 
 @Controller('products')
 export class ProductsController {
@@ -30,6 +32,7 @@ export class ProductsController {
 
   @Get('all')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async getAll() {
     return await this.productsService.getAll();
   }
@@ -41,6 +44,7 @@ export class ProductsController {
 
   @Get('hidden/:id')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async getByIdIncludesHidden(@Param('id') id: string) {
     return this.productsService.getByIdIncludesHidden(id);
   }
@@ -52,6 +56,7 @@ export class ProductsController {
 
   @Get('category/hidden/:id')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async getByCategoryIncludesHidden(@Param('id') id: string) {
     return this.productsService.getByCategoryIncludesHidden(id);
   }
@@ -69,6 +74,7 @@ export class ProductsController {
   @HttpCode(200)
   @Post()
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async create(@Body() dto: ProductDto) {
     return this.productsService.create(dto);
   }
@@ -76,6 +82,7 @@ export class ProductsController {
   @HttpCode(200)
   @Put(':id')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async updateProduct(@Param('id') id: string, @Body() dto: ProductDto) {
     return this.productsService.updateProduct(id, dto);
   }
@@ -83,6 +90,7 @@ export class ProductsController {
   @HttpCode(200)
   @Patch('many/visibility')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async toggleProductsVisibility(@Body() ids: ToggleManyDto) {
     return this.productsService.toggleProductsVisibility(ids);
   }
@@ -90,6 +98,7 @@ export class ProductsController {
   @HttpCode(200)
   @Patch(':id')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async toggleProductVisbility(@Param('id') id: string) {
     return this.productsService.toggleProductVisbility(id);
   }
@@ -97,6 +106,7 @@ export class ProductsController {
   @HttpCode(200)
   @Delete('many/delete')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async deleteMany(@Body() ids: DeleteManyDto) {
     return this.productsService.deleteMany(ids);
   }
@@ -104,6 +114,7 @@ export class ProductsController {
   @HttpCode(200)
   @Delete(':id')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async delete(@Param('id') id: string) {
     return this.productsService.delete(id);
   }

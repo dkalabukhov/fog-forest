@@ -1,10 +1,18 @@
-import { Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { OrderDto } from './dto/order.dto';
 import { CurrentUser } from 'src/users/decorators/user.decorator';
 import { Roles } from 'src/access-control/decorators/role.decorator';
 import { Role } from 'src/access-control/enums/role';
+import { RoleGuard } from 'src/access-control/guards/role.guard';
 
 @Controller('orders')
 export class OrdersController {
@@ -26,6 +34,7 @@ export class OrdersController {
 
   @Get()
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async getAllOrders() {
     return this.ordersService.getAllOrders();
   }

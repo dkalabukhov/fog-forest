@@ -7,11 +7,13 @@ import {
   Param,
   Body,
   HttpCode,
+  UseGuards,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CategoryDto } from './dto/category.dto';
 import { Roles } from 'src/access-control/decorators/role.decorator';
 import { Role } from 'src/access-control/enums/role';
+import { RoleGuard } from 'src/access-control/guards/role.guard';
 
 @Controller('categories')
 export class CategoriesController {
@@ -30,6 +32,7 @@ export class CategoriesController {
   @HttpCode(200)
   @Post()
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async create(@Body() dto: CategoryDto) {
     return this.categoriesService.create(dto);
   }
@@ -37,6 +40,7 @@ export class CategoriesController {
   @HttpCode(200)
   @Put(':id')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async update(@Param('id') id: string, @Body() dto: CategoryDto) {
     return this.categoriesService.update(id, dto);
   }
@@ -44,6 +48,7 @@ export class CategoriesController {
   @HttpCode(200)
   @Delete(':id')
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async delete(@Param('id') id: string) {
     return this.categoriesService.delete(id);
   }

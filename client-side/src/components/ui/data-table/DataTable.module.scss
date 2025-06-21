@@ -1,0 +1,41 @@
+.search {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;    // py-4 (4 = 1rem)
+  padding-bottom: 1rem; // py-4
+}
+
+.table {
+  border-radius: 0.375rem; // rounded-md (6px)
+  border: 1px solid #e5e5e5; // default border
+}
+
+.loading {
+  max-width: 1536px;     // max-w-screen-2xl
+  margin-left: auto;     // mx-auto
+  margin-right: auto;    // mx-auto
+  width: 100%;
+
+  > .heading {
+    height: 2rem;        // h-8 (8 = 2rem)
+    width: 12rem;        // w-48 (48 = 12rem)
+  }
+
+  > .search {
+    height: 2rem;        // h-8
+    width: 18rem;        // w-72 (72 = 18rem)
+    margin-top: 1.5rem;  // mt-6 (6 = 1.5rem)
+  }
+
+  > .table {
+    margin-top: 1.5rem;  // mt-6
+
+    .loader_wrapper {
+      height: 520px;     // h-[520px]
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

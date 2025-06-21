@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
 import { QueryGetAllReviewsDto } from './dto/queryGetAllReviews.dto';
@@ -15,6 +16,7 @@ import { Roles } from 'src/access-control/decorators/role.decorator';
 import { Role } from 'src/access-control/enums/role';
 import { CurrentUser } from 'src/users/decorators/user.decorator';
 import { ReviewDto } from './dto/review.dto';
+import { RoleGuard } from 'src/access-control/guards/role.guard';
 
 @Controller('reviews')
 export class ReviewsController {
@@ -22,6 +24,7 @@ export class ReviewsController {
 
   @Get()
   @Roles(Role.ADMIN)
+  @UseGuards(RoleGuard)
   async getAll(@Query() queryDto: QueryGetAllReviewsDto) {
     return this.reviewsService.getAll(queryDto);
   }

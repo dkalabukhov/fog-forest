@@ -21,7 +21,8 @@ export function Header() {
         : (
           user && (
             <>
-              <Link href={DASHBOARD_URL.home()}>
+              <Link className='flex items-center gap-2' href={DASHBOARD_URL.home()}>
+                <span>{user.name}</span>
                 <Image
                   src={user.picture}
                   alt={user.name}
