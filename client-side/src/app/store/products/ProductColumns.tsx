@@ -26,7 +26,7 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 		header: ({ column }) => {
 			return (
 				<Button
-          className='has-[>svg]:px-2'
+          className='has-[>svg]:px-2 cursor-pointer'
 					variant='ghost'
 					onClick={() =>
 						column.toggleSorting(column.getIsSorted() === 'asc')
@@ -43,7 +43,7 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 		header: ({ column }) => {
 			return (
 				<Button
-          className='has-[>svg]:px-2'
+          className='has-[>svg]:px-2 cursor-pointer'
 					variant='ghost'
 					onClick={() =>
 						column.toggleSorting(column.getIsSorted() === 'asc')
@@ -60,7 +60,7 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 		header: ({ column }) => {
 			return (
 				<Button
-          className='has-[>svg]:px-2'
+          className='has-[>svg]:px-2 cursor-pointer'
 					variant='ghost'
 					onClick={() =>
 						column.toggleSorting(column.getIsSorted() === 'asc')

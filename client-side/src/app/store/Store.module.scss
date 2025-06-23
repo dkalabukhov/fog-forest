@@ -7,6 +7,7 @@
     justify-content: space-between;
 
     > .buttons {
+      cursor: pointer;
       display: flex;
       align-items: center;
       column-gap: 1rem; // gap-x-4 (4 = 1rem)
@@ -63,8 +64,10 @@
 
 .button_submit {
   min-width: 280px;
+  cursor: pointer;
 }
 
 .button_delete {
-  min-width: 150px;
+  min-width: 200px;
+  cursor: pointer;
 }

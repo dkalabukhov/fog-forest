@@ -46,7 +46,7 @@ export function Products() {
 								href={STORE_URL.productCreate()}
 							>
 								<Button
-                  className='bg-blue-500 hover:bg-blue-600 text-white transition all duration-200 '>
+                  className='bg-blue-500 hover:bg-blue-600 text-white transition all duration-200 cursor-pointer'>
 									<Plus />
 									Добавить товар
 								</Button>

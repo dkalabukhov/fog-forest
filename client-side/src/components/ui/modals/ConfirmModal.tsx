@@ -30,8 +30,8 @@ export function ConfirmModal({
 						Это действие нельзя будет отменить.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
-				<AlertDialogFooter>
-					<AlertDialogCancel className='hover:bg-gray-200'>Закрыть</AlertDialogCancel>
+				<AlertDialogFooter className='lg:justify-center'>
+					<AlertDialogCancel className='cursor-pointer hover:bg-gray-200'>Закрыть</AlertDialogCancel>
 					<AlertDialogAction
 						className='bg-blue-500 hover:bg-blue-600 text-white transition all duration-200 '
 						onClick={() => handleClick()}

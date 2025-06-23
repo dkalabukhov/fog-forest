@@ -4,7 +4,7 @@ import { NO_INDEX_PAGE } from '@/constants/seo.constants';
 import { Products } from './Products';
 
 export const metadata: Metadata = {
-  title: 'Управление товарами',
+  title: 'Товары',
   ...NO_INDEX_PAGE,
 };
 
