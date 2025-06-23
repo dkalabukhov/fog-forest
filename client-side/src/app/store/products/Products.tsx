@@ -38,7 +38,7 @@ export function Products() {
 				<>
 					<div className={styles.header}>
 						<Heading
-							title={`Товары (${products?.length || 0})`}
+							title={`Товары (${products?.length ?? 0})`}
 							description='Список всех товаров'
 						/>
 						<div className={styles.buttons}>

@@ -37,7 +37,7 @@ export function Categories() {
 				<>
 					<div className={styles.header}>
 						<Heading
-							title={`Категории (${categories?.length})`}
+							title={`Категории (${categories?.length ?? 0})`}
 							description='Все категории вашего магазина'
 						/>
 						<div className={styles.buttons}>

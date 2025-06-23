@@ -6,11 +6,9 @@ import {
   HttpCode,
   Param,
   Post,
-  Query,
   UseGuards,
 } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
-import { QueryGetAllReviewsDto } from './dto/queryGetAllReviews.dto';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { Roles } from 'src/access-control/decorators/role.decorator';
 import { Role } from 'src/access-control/enums/role';
@@ -25,8 +23,8 @@ export class ReviewsController {
   @Get()
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
-  async getAll(@Query() queryDto: QueryGetAllReviewsDto) {
-    return this.reviewsService.getAll(queryDto);
+  async getAll() {
+    return this.reviewsService.getAll();
   }
 
   @HttpCode(200)

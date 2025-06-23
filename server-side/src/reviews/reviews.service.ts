@@ -3,7 +3,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { ReviewDto } from './dto/review.dto';
 import { UsersService } from 'src/users/users.service';
 import { ProductsService } from 'src/products/products.service';
-import { QueryGetAllReviewsDto } from './dto/queryGetAllReviews.dto';
 
 @Injectable()
 export class ReviewsService {
@@ -13,13 +12,11 @@ export class ReviewsService {
     private readonly productsService: ProductsService,
   ) {}
 
-  async getAll(dto: QueryGetAllReviewsDto) {
-    const { page, limit } = dto;
-    return this.prisma.review.findMany({
-      take: limit,
-      skip: (page - 1) * limit,
-      orderBy: {
-        createdAt: 'desc',
+  async getAll() {
+    return await this.prisma.review.findMany({
+      include: {
+        user: true,
+        product: true,
       },
     });
   }

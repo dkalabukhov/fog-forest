@@ -1,3 +1,4 @@
+import { IProduct } from "./product.interface";
 import { IUser } from "./user.interface";
 
 export interface IReview {
@@ -6,6 +7,7 @@ export interface IReview {
   text: string;
   rating: number;
   user: IUser
+  product: IProduct
 }
 
 export interface IReviewInput {
