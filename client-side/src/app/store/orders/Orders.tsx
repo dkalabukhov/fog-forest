@@ -1,0 +1,51 @@
+'use client'
+
+import { Heading } from '@/components/ui/Heading'
+import { DataTable } from '@/components/ui/data-table/DataTable'
+import DataTableLoading from '@/components/ui/data-table/DataTableLoading'
+import { formatDate } from '@/helpers/formatDate'
+
+import styles from '../Store.module.scss'
+
+import { IOrderColumn, orderColumns } from './OrderColumns'
+import { useGetOrders } from '@/hooks/queries/orders/useGetOrders'
+import { EnumOrderStatus } from '@/shared/types/order.interface'
+
+export function Orders() {
+  const { orders, isLoading } = useGetOrders()
+
+  const formattedOrders: IOrderColumn[] = orders
+    ? orders.map((order) => order.items.map((_, index) => ({
+        id: order.id,
+        productName: order.items[index].product.title,
+        quantity: order.items[index].quantity,
+        createdAt: formatDate(order.createdAt),
+        status: order.status === EnumOrderStatus.PAYED ? 'Оплачен' : 'Не оплачен',
+        orderId: order.id,
+        username: order.user.name
+      }))).flat()
+    : []
+
+  return (
+    <div className={styles.wrapper}>
+      {isLoading ? (
+        <DataTableLoading />
+      ) : (
+        <>
+          <div className={styles.header}>
+            <Heading
+              title={`Заказы (${orders?.length ?? 0})`}
+              description='Список заказов'
+            />
+          </div>
+          <div className={styles.table}>
+            <DataTable
+              columns={orderColumns}
+              data={formattedOrders}
+            />
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
