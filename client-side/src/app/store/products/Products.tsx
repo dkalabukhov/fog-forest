@@ -38,16 +38,17 @@ export function Products() {
 				<>
 					<div className={styles.header}>
 						<Heading
-							title={`Товары (${products?.length})`}
+							title={`Товары (${products?.length || 0})`}
 							description='Список всех товаров'
 						/>
 						<div className={styles.buttons}>
 							<Link
 								href={STORE_URL.productCreate()}
 							>
-								<Button>
+								<Button
+                  className='bg-blue-500 hover:bg-blue-600 text-white transition all duration-200 '>
 									<Plus />
-									Создать
+									Добавить товар
 								</Button>
 							</Link>
 						</div>

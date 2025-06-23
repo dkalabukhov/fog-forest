@@ -26,6 +26,7 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 		header: ({ column }) => {
 			return (
 				<Button
+          className='has-[>svg]:px-2'
 					variant='ghost'
 					onClick={() =>
 						column.toggleSorting(column.getIsSorted() === 'asc')
@@ -42,6 +43,7 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 		header: ({ column }) => {
 			return (
 				<Button
+          className='has-[>svg]:px-2'
 					variant='ghost'
 					onClick={() =>
 						column.toggleSorting(column.getIsSorted() === 'asc')
@@ -58,6 +60,7 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 		header: ({ column }) => {
 			return (
 				<Button
+          className='has-[>svg]:px-2'
 					variant='ghost'
 					onClick={() =>
 						column.toggleSorting(column.getIsSorted() === 'asc')
@@ -79,13 +82,13 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 						<MoreHorizontal className='size-4' />
 					</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent align='end'>
+				<DropdownMenuContent className="bg-blue-500 text-white" align='end'>
 					<DropdownMenuLabel>Редактирование</DropdownMenuLabel>
 					<Link
 						href={PUBLIC_URL.product(row.original.id)}
 						target='_blank'
 					>
-						<DropdownMenuItem>
+						<DropdownMenuItem className="hover:bg-blue-600">
 							<ExternalLink className='size-4 mr-2' />
 							Страница с продуктом
 						</DropdownMenuItem>
@@ -95,7 +98,7 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 							row.original.id
 						)}
 					>
-						<DropdownMenuItem>
+						<DropdownMenuItem className="hover:bg-blue-600">
 							<Pencil className='size-4 mr-2' />
 							Изменить
 						</DropdownMenuItem>

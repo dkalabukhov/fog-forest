@@ -31,9 +31,9 @@ export function ConfirmModal({
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
-					<AlertDialogCancel>Закрыть</AlertDialogCancel>
+					<AlertDialogCancel className='hover:bg-gray-200'>Закрыть</AlertDialogCancel>
 					<AlertDialogAction
-						className='bg-blue-500 hover:bg-blue-500/90'
+						className='bg-blue-500 hover:bg-blue-600 text-white transition all duration-200 '
 						onClick={() => handleClick()}
 					>
 						Продолжить
