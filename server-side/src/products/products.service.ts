@@ -175,21 +175,21 @@ export class ProductsService {
       },
     });
 
-    const productIds = mostPopularProducts.map((product) => product.productId);
+    const productIds = mostPopularProducts.map((item) => item.productId);
 
-    return await this.prisma.product.findMany({
+    const products = await this.prisma.product.findMany({
       where: {
         id: {
           in: productIds,
         },
-        isAvailable: true,
       },
       include: {
         category: true,
-        reviews: true,
       },
       take: limit,
     });
+
+    return products;
   }
 
   async getSimilar(id: string) {

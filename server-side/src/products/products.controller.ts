@@ -37,9 +37,9 @@ export class ProductsController {
     return await this.productsService.getAll();
   }
 
-  @Get(':id')
-  async getById(@Param('id') id: string) {
-    return this.productsService.getById(id);
+  @Get('most-popular')
+  async getMostPopular(@Query() queryDto: QueryGetMostPopularDto) {
+    return this.productsService.getMostPopular(queryDto.limit);
   }
 
   @Get('hidden/:id')
@@ -61,14 +61,14 @@ export class ProductsController {
     return this.productsService.getByCategoryIncludesHidden(id);
   }
 
-  @Get('most-popular')
-  async getMostPopular(@Query() queryDto: QueryGetMostPopularDto) {
-    return this.productsService.getMostPopular(queryDto.limit);
-  }
-
   @Get('similar/:id')
   async getSimilar(@Param('id') id: string) {
     return this.productsService.getSimilar(id);
+  }
+
+  @Get(':id')
+  async getById(@Param('id') id: string) {
+    return this.productsService.getById(id);
   }
 
   @HttpCode(200)

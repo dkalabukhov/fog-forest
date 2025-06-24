@@ -4,13 +4,13 @@ import { Button } from '@/components/ui/Button'
 import styles from './Home.module.scss'
 import { useRouter } from 'next/navigation'
 import { PUBLIC_URL } from '@/config/url.config'
-import { useGetProducts } from '@/hooks/queries/products/useGetProducts'
 import { Catalog } from '@/components/ui/catalog/Catalog'
 import { Loader } from '@/components/ui/Loader'
+import { useGetMostPopular } from '@/hooks/queries/products/useGetMostPopular'
 
 export function Home() {
   const router = useRouter()
-  const { products, isLoading } = useGetProducts()
+  const { products, isLoading } = useGetMostPopular()
 
   return (
     <>
