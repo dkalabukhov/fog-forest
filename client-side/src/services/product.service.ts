@@ -3,7 +3,7 @@ import { API_URL } from "@/config/api.config";
 import { IProduct, IProductInput } from "@/shared/types/product.interface";
 
 class ProductService {
-  async getAllWithFilters(searchTerm?: string, page?: number, limit?: number) {
+  async getAllWithFilters(searchTerm?: string | null, page?: number, limit?: number) {
     let params = {};
     if (searchTerm) {
       params = { searchTerm };

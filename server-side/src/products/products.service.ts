@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ProductWithRelations } from './products.model';
 import { QueryGetAllWithFiltersDto } from './dto/queryGetAllWithFilters.dto';
@@ -20,14 +16,22 @@ export class ProductsService {
           OR: [
             {
               title: {
-                contains: dto.searchTerm,
-                mode: 'insensitive',
+                search: dto.searchTerm
+                  .replace(/[.,/#!$%^&*;:{}=_`~()-]/g, '')
+                  .replace(/\s+/g, ' ')
+                  .trim()
+                  .split(' ')
+                  .join(' | '),
               },
             },
             {
               description: {
-                contains: dto.searchTerm,
-                mode: 'insensitive',
+                search: dto.searchTerm
+                  .replace(/[.,/#!$%^&*;:{}=_`~()-]/g, '')
+                  .replace(/\s+/g, ' ')
+                  .trim()
+                  .split(' ')
+                  .join(' | '),
               },
             },
           ],
@@ -60,7 +64,18 @@ export class ProductsService {
       });
     }
 
-    throw new BadRequestException('Запрос отправлен без фильтров');
+    return await this.prisma.product.findMany({
+      where: {
+        isAvailable: true,
+      },
+      include: {
+        category: true,
+        reviews: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
   }
 
   async getAll() {

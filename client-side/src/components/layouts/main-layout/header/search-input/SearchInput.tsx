@@ -16,8 +16,15 @@ export function SearchInput() {
 
 	const router = useRouter()
 
+	const handleSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		if (searchTerm.trim() !== '') {
+			router.push(PUBLIC_URL.explorer(`?searchTerm=${searchTerm}`))
+		}
+	}
+
 	return (
-		<form className={styles.form}>
+		<form className={styles.form} onSubmit={handleSubmit}>
 			<Input
         className={styles.searchInput}
 				placeholder='Поиск товаров'
@@ -26,15 +33,8 @@ export function SearchInput() {
 			/>
 			<Button
 				className='cursor-pointer hover:opacity-80'
-				type='button'
+				type='submit'
 				variant='ghost'
-				onClick={() => {
-					if (searchTerm.trim() !== '') {
-						router.push(
-							PUBLIC_URL.explorer(`?searchTerm=${searchTerm}`)
-						)
-					}}
-				}
 			>
 				<Search />
 			</Button>
