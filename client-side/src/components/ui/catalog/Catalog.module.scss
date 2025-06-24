@@ -11,6 +11,14 @@
     font-size: 1.5rem;
     text-transform: uppercase;
   }
+
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
 }
 
 .products {

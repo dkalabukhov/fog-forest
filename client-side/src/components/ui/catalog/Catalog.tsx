@@ -16,7 +16,7 @@ export function Catalog({
 			<div className={styles.header}>
 				<div className={styles.header__info}>
 					<h3 className={styles.header__title}>{title}</h3>
-					{description && <p>{description}</p>}
+					{description && <p className={styles.header__description}>{description}</p>}
 				</div>
 				{link && linkTitle && <Link href={link}>{linkTitle}</Link>}
 			</div>

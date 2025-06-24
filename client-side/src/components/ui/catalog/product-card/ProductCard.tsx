@@ -2,6 +2,8 @@ import { IProduct } from '@/shared/types/product.interface'
 import styles from './ProductCard.module.scss'
 import Image from 'next/image'
 import { formatPrice } from '@/helpers/formatPrice'
+import Link from 'next/link'
+import { PUBLIC_URL } from '@/config/url.config'
 
 interface ProductCardProps {
   product: IProduct
@@ -15,7 +17,9 @@ export function ProductCard({ product }: ProductCardProps) {
           {product.title}
         </h3>
         <span className={styles.card__price}>{formatPrice(product.price)}</span>
-        <span className={styles.card__category}>{product.category.title}</span>
+        <Link className={styles.card__category} href={PUBLIC_URL.category(product.category.id)}>
+          <span>{product.category.title}</span>
+        </Link>
       </header>
       <div className={styles.card__body}>
         <Image
