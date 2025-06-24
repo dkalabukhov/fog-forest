@@ -11,6 +11,7 @@ import { Request, Response } from 'express';
 import { ConfigService } from '@nestjs/config';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { verify } from 'argon2';
+import { AuthenticatedRequest, JwtPayload } from './auth.model';
 
 @Injectable()
 export class AuthService {
@@ -179,5 +180,23 @@ export class AuthService {
       secure: false,
       sameSite: 'lax',
     });
+  }
+
+  verifyRole(req: AuthenticatedRequest): { role: string | null } {
+    const accessToken = req.cookies[this.ACCESS_TOKEN_NAME];
+
+    if (!accessToken) {
+      throw new UnauthorizedException('accessToken не найден в cookie');
+    }
+
+    try {
+      const payload = this.jwt.verify<JwtPayload>(accessToken);
+      return { role: payload.role || null };
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        throw new UnauthorizedException(`Invalid token: ${error.message}`);
+      }
+      throw new UnauthorizedException('Invalid token');
+    }
   }
 }

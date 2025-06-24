@@ -13,9 +13,7 @@ import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
 import { Request, Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
-import { RoleGuard } from 'src/access-control/guards/role.guard';
-import { Roles } from 'src/access-control/decorators/role.decorator';
-import { Role } from 'src/access-control/enums/role';
+import { AuthenticatedRequest } from './auth.model';
 
 @Controller('auth')
 export class AuthController {
@@ -94,17 +92,8 @@ export class AuthController {
     return res.redirect(`${process.env.CLIENT_URL}`);
   }
 
-  @Get('admin')
-  @Roles(Role.ADMIN)
-  @UseGuards(RoleGuard)
-  adminOnlyEndPoint() {
-    return 'Only for admin';
-  }
-
-  @Get('customer')
-  @Roles(Role.CUSTOMER)
-  @UseGuards(RoleGuard)
-  loggedUserEndPoint() {
-    return 'Only for logged user';
+  @Get('verify-role')
+  verifyRole(@Req() req: AuthenticatedRequest) {
+    return this.authService.verifyRole(req);
   }
 }

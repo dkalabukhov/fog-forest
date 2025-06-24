@@ -1,10 +1,8 @@
-import { axiosPublic } from '@/api/api.interceptors'
+import { axiosPublic, axiosWithAuth } from '@/api/api.interceptors'
 
 import { API_URL } from '@/config/api.config'
 
 import { IAuthForm, IAuthResponse } from '@/shared/types/auth.interface'
-
-// import { removeFromStorage, saveTokenStorage } from '@/services/auth/auth-token.service'
 
 class AuthService {
 	async main(type: 'login' | 'register', data: IAuthForm) {
@@ -13,9 +11,6 @@ class AuthService {
 			method: 'POST',
 			data
 		})
-
-		// if (response.data.accessToken)
-		// 	saveTokenStorage(response.data.accessToken)
 
 		return response
 	}
@@ -26,9 +21,6 @@ class AuthService {
 			method: 'POST'
 		})
 
-		// if (response.data.accessToken)
-		// 	saveTokenStorage(response.data.accessToken)
-
 		return response
 	}
 
@@ -38,7 +30,14 @@ class AuthService {
 			method: 'POST'
 		})
 
-		// if (response.data) removeFromStorage()
+		return response
+	}
+
+	async verifyRole() {
+		const response = await axiosWithAuth<IAuthResponse>({
+			url: API_URL.auth('/verify-role'),
+			method: 'GET'
+		})
 
 		return response
 	}

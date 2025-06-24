@@ -1,0 +1,40 @@
+.footer {
+  background-color: #0F110C;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2rem;
+  padding: 60px 0;
+
+  > h3 {
+    font-size: 1.25rem;
+    font-weight: 200;
+    text-transform: uppercase;
+  }
+}
+
+.menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.container {
+  max-width: 357px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1110px) {
+  .container {
+    max-width: 1110px;
+  }
+}

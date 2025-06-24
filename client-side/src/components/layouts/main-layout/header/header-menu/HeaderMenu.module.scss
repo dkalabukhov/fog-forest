@@ -1,0 +1,20 @@
+.header_menu {
+  display: none;
+  align-items: center;
+  gap: 0.5rem; // gap-x-2 → 0.5rem (8px)
+  margin-left: auto;
+
+  @media (min-width: 1024px) { // lg breakpoint
+    display: flex;
+  }
+
+  .avatar {
+    border-radius: 9999px; // rounded-full
+  }
+
+  .icon {
+    width: 1rem; // size-4 → 1rem (16px)
+    height: 1rem;
+    margin-right: 0.5rem; // mr-2 → 0.5rem
+  }
+}

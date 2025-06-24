@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding-top: 2rem;
+}
+
+.header {
+  &__title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .products {
+    gap: 5rem;
+  }
+}

@@ -5,5 +5,5 @@ export const getJwtConfig = async (
   configService: ConfigService,
   // eslint-disable-next-line
 ): Promise<JwtModuleOptions> => ({
-  secret: configService.get('JWT_SECRET'),
+  secret: configService.getOrThrow('JWT_SECRET'),
 });
