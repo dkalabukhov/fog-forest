@@ -28,13 +28,13 @@ export function useAuthForm(isReg: boolean) {
       router.replace(PUBLIC_URL.home());
     },
     onError(error: any) {
-      if (error.message) {
-        toast.error(error.message)
+      if (error.response.data.message) {
+        toast.error(error.response.data.message)
       } else {
         toast.error('Что-то пошло не так')
       }
     }
-  })
+  });
 
   const onSubmit: SubmitHandler<IAuthForm> = (data) => {
     mutate(data);
