@@ -15,15 +15,15 @@ export function Orders() {
   const { orders, isLoading } = useGetOrders()
 
   const formattedOrders: IOrderColumn[] = orders
-    ? orders.map((order) => order.items.map((_, index) => ({
+    ? orders.map((order) =>({
         id: order.id,
-        productName: order.items[index].product.title,
-        quantity: order.items[index].quantity,
+        products: order.items.reduce((acc, item) => {
+          return acc + `${item.product.title} (${item.quantity}шт)\n`
+        }, ''),
         createdAt: formatDate(order.createdAt),
         status: order.status === EnumOrderStatus.PAYED ? 'Оплачен' : 'Не оплачен',
-        orderId: order.id,
         username: order.user.name
-      }))).flat()
+      }))
     : []
 
   return (

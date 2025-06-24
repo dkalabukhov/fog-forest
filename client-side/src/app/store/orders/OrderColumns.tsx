@@ -7,12 +7,10 @@ import { Button } from '@/components/ui/Button'
 
 export interface IOrderColumn {
   id: string
-  productName: string
-  quantity: number
+  products: string
   createdAt: string
   status: string
   username: string
-  orderId: string
 }
 
 export const orderColumns: ColumnDef<IOrderColumn>[] = [
@@ -34,7 +32,7 @@ export const orderColumns: ColumnDef<IOrderColumn>[] = [
     }
   },
     {
-    accessorKey: 'productName',
+    accessorKey: 'products',
     header: ({ column }) => {
       return (
         <Button
@@ -45,23 +43,6 @@ export const orderColumns: ColumnDef<IOrderColumn>[] = [
           }
         >
           Название продукта
-          <ArrowUpDown className='ml-2 h-4 w-4' />
-        </Button>
-      )
-    }
-  },
-  {
-    accessorKey: 'quantity',
-    header: ({ column }) => {
-      return (
-        <Button
-          className='has-[>svg]:px-2 cursor-pointer'
-          variant='ghost'
-          onClick={() =>
-            column.toggleSorting(column.getIsSorted() === 'asc')
-          }
-        >
-          Количество
           <ArrowUpDown className='ml-2 h-4 w-4' />
         </Button>
       )
@@ -79,23 +60,6 @@ export const orderColumns: ColumnDef<IOrderColumn>[] = [
           }
         >
           Пользователь
-          <ArrowUpDown className='ml-2 h-4 w-4' />
-        </Button>
-      )
-    }
-  },
-  {
-    accessorKey: 'orderId',
-    header: ({ column }) => {
-      return (
-        <Button
-          className='has-[>svg]:px-2 cursor-pointer'
-          variant='ghost'
-          onClick={() =>
-            column.toggleSorting(column.getIsSorted() === 'asc')
-          }
-        >
-          ID заказа
           <ArrowUpDown className='ml-2 h-4 w-4' />
         </Button>
       )

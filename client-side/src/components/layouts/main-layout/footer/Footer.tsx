@@ -14,7 +14,7 @@ export function Footer() {
                 <Link href={PUBLIC_URL.home()}>Главная</Link>
               </li>
               <li className='hover:text-white/70'>
-                <Link href={PUBLIC_URL.home()}>Каталог</Link>
+                <Link href={PUBLIC_URL.explorer()}>Каталог</Link>
               </li>
             </ul>
           </nav>

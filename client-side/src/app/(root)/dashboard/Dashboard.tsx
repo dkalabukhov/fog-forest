@@ -34,8 +34,11 @@ export function Dashboard() {
 
 	const formattedOrders: IOrderColumn[] = user.orders.map(order => ({
 		createdAt: formatDate(order.createdAt),
+		products: order.items.reduce((acc, item) => {
+			return acc + `${item.product.title} (${item.quantity}шт)\n`
+		}, ''),
 		status:
-			order.status === EnumOrderStatus.PENDING ? 'В ожидании' : 'Оплачен',
+			order.status === EnumOrderStatus.PENDING ? 'Ждет оплаты' : 'Оплачен',
 		total: formatPrice(order.total)
 	}))
 

@@ -16,6 +16,10 @@
     font-size: 1.4rem;
   }
 
+  &__title:hover {
+    opacity: 0.8;
+  }
+
   &__price {
     font-size: 1.2rem;
   }
@@ -26,6 +30,10 @@
     border-radius: 10px;
     width: fit-content;
     font-size: 0.9rem;
+  }
+
+  &__category:hover {
+    opacity: 0.8;
   }
 
   &__body {

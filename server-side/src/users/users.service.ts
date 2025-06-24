@@ -14,7 +14,15 @@ export class UsersService {
       },
       include: {
         favorites: true,
-        orders: true,
+        orders: {
+          include: {
+            items: {
+              include: {
+                product: true,
+              },
+            },
+          },
+        },
       },
     });
 
