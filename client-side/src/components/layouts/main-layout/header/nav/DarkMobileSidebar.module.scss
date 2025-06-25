@@ -1,0 +1,55 @@
+.sidebarContent {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.menuItem {
+  width: 100%;
+}
+
+.menuButton {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 0.75rem 1rem;
+}
+
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.userProfile {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatarLink {
+  display: inline-block;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.icon {
+  margin-right: 0.5rem;
+}

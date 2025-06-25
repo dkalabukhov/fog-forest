@@ -10,11 +10,19 @@ export function Header() {
       <div className={styles.container}>
         <nav className={styles.header__control}>
           <div className={styles.header__group}>
-            <DarkMobileSidebar />
-            <Logo />
+            <div className={styles.header__darkMobileSidebar}>
+              <DarkMobileSidebar />
+            </div>
+            <div className={styles.logo}>
+              <Logo />
+            </div>
+            <div className={styles.headerMenu}>
+              <HeaderMenu /> {/* Корзина теперь в основной группе */}
+            </div>
           </div>
-          <SearchInput />
-          <HeaderMenu />
+          <div className={styles.searchInput}>
+            <SearchInput /> {/* Поле поиска под группой */}
+          </div>
         </nav>
       </div>
     </header>
