@@ -1,98 +1,53 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+1. Запуск docker-контейнера с postgres:
+```
+docker compose up -d
+```
+2. Создание .env файла. На основе .env.example файла создайте .env файл - заполните все поля с плейсхолдерами. .env файл требуется приложению для корректной работы.
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Project setup
-
-```bash
-$ npm install
+3. JWT-secret. Чтобы сгенерировать JWT-secret можно воспользоваться следующей командой - введите в консоль:
+```
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-## Compile and run the project
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+4. GOOGLE_CLIENT_ID и GOOGLE_CLIENT_SECRET. Чтобы получить эти значения перейдите на сайт https://console.cloud.google.com/. Создайте новый проект. После создания проекта перейдите в настройку OAuth consent screen и выберите User Type: External (!) (затем заполните открывшуюся форму любыми данными). Далее перейдите в настройку Credentials, нажмите кнопу create credentials и выберите OAuth cliend ID. В открывшейся форме введите следующие данные: Application type - Web application, далее (важно!)
+Authorized JavaScript orgins:
 ```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+http://localhost:5000
 ```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+Authorized redirect URIs
 ```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+http://localhost:5000/auth/google/callback
+```
+После заполнения формы и ее отправки откроется модальное окно с CLIENt_ID и CLIENT_SECRET, которые нужно добавить в .env файл.
+5. YOOKASSA_SHOP_ID и YOOKASSA_SECRET_KEY. Чтобы получить эти данные - нужно создать тестовый магазин по ссылке https://yookassa.ru/joinups?createTestShop=true После регистрации (указывать ИНН, ИП и так далее не нужно) вы увидите страницу тестового магазина. SHOP_ID скопируйте со страницы магазина. Чтобы получить SecretKey нужно зайти в "Интеграция" - "Ключи API" и скопировать секретный ключ.
+6. HTTP-уведомления и автоматическая обработка платежа. В меню "Интеграция" - нажмите HTTP-уведомления. Добавьте в url уведомления следующие данные - см пункт 7.
+7. Запуск туннеля. Чтобы платежи успешно обрабатывались нужно запустить туннель. Бесплатное решение - это https://tuna.am/ Зарегистрируйтесь, установите необходимое ПО по интрукции на сайте. Чтобы запустить туннель введите (сервер приложения должен быть уже запущен - см пункт 9) в консоль
+```
+tuna http 5000
+```
+Обратите внимание, что без платной подписки ваш туннель будет работать 30 минут без перезапуска и каждый раз он будет доступен по новому адресу.
+Каждый раз при запуске туннеля (без домена) нужно будет вводить ваш туннель по новому в HTTP-уведомления юкассы. В HTTP-уведомления введите следующую строку
+```
+https://ваш-туннель/orders/status
+```
+8. Установка зависимотей. Введите команду:
+```
+npm i
+```
+9. Prisma. Для корректной работы программы введите следующие команды по порядку:
+```
+npx prisma db push
+```
+```
+npx prisma generate
+```
+10. Запуск сервера. Итоги. Запускайте сервер при помощи следующей команды:
+```
+npm run start
+```
+Далее запускайте туннель
+```
+tuna http 5000
+```
+Затем обновляйте значение URL для уведомлений в юкассе.
+Сервер полносью настроен.
