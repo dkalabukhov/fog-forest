@@ -51,6 +51,13 @@
     position: relative;
     filter: brightness(50%)
   }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    align-self: start;
+  }
 }
 
 @media (min-width: 768px) {
@@ -59,7 +66,7 @@
     width: fit-content;
     align-content: end;
     position: relative;
-    gap: 2rem;
+    gap: 0.5rem;
     min-height: 350px;
     min-width: 450px;
 

@@ -1,0 +1,17 @@
+
+.image {
+  border-radius: 0.5rem; // rounded-lg соответствует 0.5rem
+}
+
+.gallery {
+  display: flex;
+  margin-top: 1.5rem; // mt-6 соответствует 1.5rem (6 * 0.25rem)
+  gap: 1.5rem; // gap-6 соответствует 1.5rem
+
+  > .item {
+    transition-duration: 300ms; // duration-300
+    border: 1px solid; // border (по умолчанию 1px solid)
+    border-radius: 0.5rem; // rounded-lg
+    overflow: hidden; // overflow-hidden
+  }
+}

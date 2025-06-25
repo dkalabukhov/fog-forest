@@ -1,0 +1,84 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > h1 {
+    font-size: 1.5rem; // text-2xl
+    line-height: 2rem;
+    font-weight: 700; // font-bold
+  }
+
+  svg {
+    width: 1rem; // size-4 (4 = 1rem)
+    height: 1rem;
+    margin-right: 0.5rem; // mr-2 (2 = 0.5rem)
+  }
+}
+
+.reviews {
+  display: grid;
+  gap: 2rem; // gap-8 (8 = 2rem)
+  margin-top: 1rem; // mt-4 (4 = 1rem)
+
+  // Responsive grid columns
+  grid-template-columns: 600px;
+
+  > .review {
+    border-radius: 0.5rem; // rounded-lg
+    padding: 1rem; // p-4 (4 = 1rem)
+
+    > .header {
+      display: flex;
+			justify-content: start;
+
+      > .user {
+        display: flex;
+        align-items: center;
+        gap: 1rem; // gap-x-4 (4 = 1rem)
+        font-weight: 500; // font-medium
+
+        > img {
+          border-radius: 9999px; // rounded-full
+        }
+      }
+    }
+
+    .delete {
+      margin-top: -0.75rem; // -mt-3 (3 = 0.75rem)
+			margin-left: 30px;
+      color: #ef4444; // text-red-500
+			cursor: pointer;
+
+      > svg {
+        width: 1.25rem; // size-5 (5 = 1.25rem)
+        height: 1.25rem;
+      }
+    }
+
+    > .text {
+      font-size: 0.875rem; // text-sm
+      line-height: 1.25rem;
+      color: hsl(240, 5%, 64.9%); // text-muted-foreground (примерное значение)
+      margin-top: 0.25rem; // mt-1 (1 = 0.25rem)
+    }
+
+    > .not_found {
+      margin-top: 1rem; // mt-4 (4 = 1rem)
+    }
+  }
+}
+
+.button_addReview {
+	display: flex;
+	gap: 1rem;
+	border: 1px solid #fff;
+	color: #fff;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	align-items: center;
+
+	&:hover {
+		opacity: 0.8;
+	}
+}

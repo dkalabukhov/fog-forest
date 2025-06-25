@@ -84,7 +84,7 @@ export class OrdersService {
       },
       confirmation: {
         type: 'redirect',
-        return_url: `${process.env.CLIENT_URL}/success`,
+        return_url: `${process.env.CLIENT_URL}/dashboard/success`,
       },
       description: `Оплата заказа в магазине fog&forest. Id платежа #${order.id}`,
     });

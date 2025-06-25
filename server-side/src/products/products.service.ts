@@ -39,7 +39,11 @@ export class ProductsService {
         },
         include: {
           category: true,
-          reviews: true,
+          reviews: {
+            include: {
+              user: true,
+            },
+          },
         },
         orderBy: {
           createdAt: 'desc',
@@ -98,7 +102,11 @@ export class ProductsService {
       },
       include: {
         category: true,
-        reviews: true,
+        reviews: {
+          include: {
+            user: true,
+          },
+        },
       },
     });
 

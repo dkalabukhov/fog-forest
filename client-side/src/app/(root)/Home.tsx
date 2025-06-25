@@ -30,6 +30,7 @@ export function Home() {
           </div>
         </div>
       </div>
+      {products && products.length > 0 && (
       <div className={styles.catalog}>
         {isLoading
         ? <Loader />
@@ -41,6 +42,7 @@ export function Home() {
         )
       }
       </div>
+      )}
     </>
   )
 }

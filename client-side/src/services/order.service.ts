@@ -14,7 +14,6 @@ type TypeData = {
 		quantity: number
 		price: number
 		productId: string
-		storeId: string
 	}[]
 }
 

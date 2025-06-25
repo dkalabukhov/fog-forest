@@ -15,7 +15,7 @@ class UserService {
   async toggleFavorites(productId: string) {
     const response = await axiosWithAuth<IUser>({
       url: API_URL.users(`/profile/favorites/${productId}`),
-      method: 'PUT'
+      method: 'PATCH'
     });
 
     return response

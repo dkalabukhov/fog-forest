@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { formatPrice } from '@/helpers/formatPrice'
 import Link from 'next/link'
 import { PUBLIC_URL } from '@/config/url.config'
+import { AddToCartButton } from '../../product-buttons/AddToCartButton'
+import { FavoriteButton } from '../../product-buttons/FavoriteButton'
 
 interface ProductCardProps {
   product: IProduct
@@ -34,6 +36,10 @@ export function ProductCard({ product }: ProductCardProps) {
           />
         </Link>
         <p className={styles.card__description}>{product.description}</p>
+        <div className={styles.card__buttons}>
+          <AddToCartButton product={product} />
+          <FavoriteButton product={product} />
+        </div>
       </div>
     </div>
   )
