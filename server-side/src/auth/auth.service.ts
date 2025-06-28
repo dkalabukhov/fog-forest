@@ -183,7 +183,12 @@ export class AuthService {
   }
 
   verifyRole(req: AuthenticatedRequest): { role: string | null } {
-    const accessToken = req.cookies[this.ACCESS_TOKEN_NAME];
+    let accessToken: string | null = null;
+    if (req.headers.authorization) {
+      accessToken = req.headers.authorization.split(' ')[1];
+    } else if (req.cookies[this.ACCESS_TOKEN_NAME]) {
+      accessToken = req.cookies[this.ACCESS_TOKEN_NAME];
+    }
 
     if (!accessToken) {
       throw new UnauthorizedException('accessToken не найден в cookie');
