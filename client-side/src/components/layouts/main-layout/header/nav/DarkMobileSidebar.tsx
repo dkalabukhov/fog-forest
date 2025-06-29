@@ -24,7 +24,7 @@ export function DarkMobileSidebar() {
       <SheetHeader className="sr-only">
         <SheetTitle className="sr-only">Меню навигации</SheetTitle>
       </SheetHeader>
-      <SheetContent side="left" className="p-0 bg-black text-white">
+      <SheetContent side="left" className="p-0 bg-black text-white border-none">
         <div className={styles.sidebarContent}>
           <div className={styles.menuTitle}>Меню</div>
           <nav className={styles.navMenu}>

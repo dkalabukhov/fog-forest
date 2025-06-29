@@ -36,7 +36,7 @@ export function HeaderCart() {
 			<SheetTrigger asChild>
 				<Button variant='ghost' className='cursor-pointer hover:opacity-80'>Корзина</Button>
 			</SheetTrigger>
-			<SheetContent className={styles.cart}>
+			<SheetContent className={`${styles.cart} border-none`}>
         <SheetTitle className='sr-only'>Корзина</SheetTitle>
 				<Heading title='Корзина товаров' className='text-xl' />
 				<div className={styles.items}>
@@ -54,7 +54,7 @@ export function HeaderCart() {
 							Итого к оплате: {formatPrice(total)}
 						</div>
 						<Button
-              className='bg-white text-black hover:bg-black hover:text-white transition all duration-200'
+              className='bg-white text-black hover:opacity-80 transition all duration-200'
 							onClick={handleClick}
 							disabled={isLoadingCreate}
 						>
