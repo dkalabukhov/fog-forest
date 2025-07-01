@@ -48,13 +48,13 @@
     &__control {
       display: grid;
       grid-template-areas: "sidebar logo search menu";
-      grid-template-columns: auto 1fr 230px auto;
+      grid-template-columns: auto 1fr minmax(auto, 230px) auto;
       align-items: center;
       gap: 2rem;
     }
 
     &__group {
-      display: contents; // Разбираем группу, чтобы элементы попали в общую сетку
+      display: contents;
 
       .header__darkMobileSidebar {
         grid-area: sidebar;

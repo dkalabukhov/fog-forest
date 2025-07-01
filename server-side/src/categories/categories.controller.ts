@@ -14,6 +14,7 @@ import { CategoryDto } from './dto/category.dto';
 import { Roles } from 'src/access-control/decorators/role.decorator';
 import { Role } from 'src/access-control/enums/role';
 import { RoleGuard } from 'src/access-control/guards/role.guard';
+import { Auth } from 'src/auth/decorators/auth.decorator';
 
 @Controller('categories')
 export class CategoriesController {
@@ -33,6 +34,7 @@ export class CategoriesController {
   @Post()
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async create(@Body() dto: CategoryDto) {
     return this.categoriesService.create(dto);
   }
@@ -41,6 +43,7 @@ export class CategoriesController {
   @Put(':id')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async update(@Param('id') id: string, @Body() dto: CategoryDto) {
     return this.categoriesService.update(id, dto);
   }
@@ -49,6 +52,7 @@ export class CategoriesController {
   @Delete(':id')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async delete(@Param('id') id: string) {
     return this.categoriesService.delete(id);
   }

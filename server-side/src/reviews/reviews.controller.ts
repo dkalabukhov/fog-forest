@@ -23,6 +23,7 @@ export class ReviewsController {
   @Get()
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async getAll() {
     return this.reviewsService.getAll();
   }

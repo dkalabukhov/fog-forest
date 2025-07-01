@@ -20,6 +20,7 @@ import { ProductDto } from './dto/product.dto';
 import { ToggleManyDto } from './dto/toggleMany.dto';
 import { DeleteManyDto } from './dto/deleteMany.dto';
 import { RoleGuard } from 'src/access-control/guards/role.guard';
+import { Auth } from 'src/auth/decorators/auth.decorator';
 
 @Controller('products')
 export class ProductsController {
@@ -33,6 +34,7 @@ export class ProductsController {
   @Get('all')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async getAll() {
     return await this.productsService.getAll();
   }
@@ -45,6 +47,7 @@ export class ProductsController {
   @Get('hidden/:id')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async getByIdIncludesHidden(@Param('id') id: string) {
     return this.productsService.getByIdIncludesHidden(id);
   }
@@ -57,6 +60,7 @@ export class ProductsController {
   @Get('category/hidden/:id')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async getByCategoryIncludesHidden(@Param('id') id: string) {
     return this.productsService.getByCategoryIncludesHidden(id);
   }
@@ -75,6 +79,7 @@ export class ProductsController {
   @Post()
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async create(@Body() dto: ProductDto) {
     return this.productsService.create(dto);
   }
@@ -83,6 +88,7 @@ export class ProductsController {
   @Put(':id')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async updateProduct(@Param('id') id: string, @Body() dto: ProductDto) {
     return this.productsService.updateProduct(id, dto);
   }
@@ -91,6 +97,7 @@ export class ProductsController {
   @Patch('many/visibility')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async toggleProductsVisibility(@Body() ids: ToggleManyDto) {
     return this.productsService.toggleProductsVisibility(ids);
   }
@@ -99,6 +106,7 @@ export class ProductsController {
   @Patch(':id')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async toggleProductVisbility(@Param('id') id: string) {
     return this.productsService.toggleProductVisbility(id);
   }
@@ -107,6 +115,7 @@ export class ProductsController {
   @Delete('many/delete')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async deleteMany(@Body() ids: DeleteManyDto) {
     return this.productsService.deleteMany(ids);
   }
@@ -115,6 +124,7 @@ export class ProductsController {
   @Delete(':id')
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async delete(@Param('id') id: string) {
     return this.productsService.delete(id);
   }

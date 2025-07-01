@@ -12,7 +12,6 @@ import { GoogleStrategy } from './strategies/google.strategy';
 @Module({
   imports: [
     UsersModule,
-    ConfigModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

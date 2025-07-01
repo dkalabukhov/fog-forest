@@ -35,6 +35,7 @@ export class OrdersController {
   @Get()
   @Roles(Role.ADMIN)
   @UseGuards(RoleGuard)
+  @Auth()
   async getAllOrders() {
     return this.ordersService.getAllOrders();
   }

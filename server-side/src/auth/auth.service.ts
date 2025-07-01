@@ -16,7 +16,7 @@ import { AuthenticatedRequest, JwtPayload } from './auth.model';
 @Injectable()
 export class AuthService {
   ACCESS_TOKEN_NAME = 'accessToken';
-  EXPIRE_DAY_ACCESS_TOKEN = 1;
+  EXPIRE_HOURS_ACCESS_TOKEN = 1;
 
   REFRESH_TOKEN_NAME = 'refreshToken';
   EXPIRE_DAY_REFRESH_TOKEN = 7;
@@ -116,7 +116,7 @@ export class AuthService {
     const data = { id: userId, role };
 
     const accessToken = this.jwt.sign(data, {
-      expiresIn: '1d',
+      expiresIn: '1h',
     });
 
     const refreshToken = this.jwt.sign(data, {
@@ -151,7 +151,7 @@ export class AuthService {
 
   addAcessTokenToResponse(res: Response, accessToken: string) {
     const expiresIn = new Date();
-    expiresIn.setDate(expiresIn.getDate() + this.EXPIRE_DAY_ACCESS_TOKEN);
+    expiresIn.setHours(expiresIn.getHours() + this.EXPIRE_HOURS_ACCESS_TOKEN);
 
     res.cookie(this.ACCESS_TOKEN_NAME, accessToken, {
       httpOnly: true,

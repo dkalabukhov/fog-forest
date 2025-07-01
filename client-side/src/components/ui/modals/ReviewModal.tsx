@@ -1,6 +1,7 @@
 import { PropsWithChildren, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Rating } from 'react-simple-star-rating'
+import styles from './ReviewModal.module.scss'
 
 import { useCreateReview } from '@/hooks/queries/reviews/useCreateReview'
 
@@ -56,7 +57,7 @@ export function ReviewModal({
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
-						className='space-y-4'
+						className='space-y-8'
 					>
 						<FormField
 							control={form.control}
@@ -77,7 +78,7 @@ export function ReviewModal({
 											transition
 										/>
 									</FormControl>
-									<FormMessage />
+									<FormMessage className={styles.errorMessage} />
 								</FormItem>
 							)}
 						/>
@@ -97,13 +98,14 @@ export function ReviewModal({
 											disabled={isLoadingCreate}
 										/>
 									</FormControl>
-									<FormMessage />
+									<FormMessage className={styles.errorMessage} />
 								</FormItem>
 							)}
 						/>
 
 						<div className='flex justify-end'>
 							<Button
+								variant='ghost'
 								disabled={isLoadingCreate}
 							>
 								Добавить

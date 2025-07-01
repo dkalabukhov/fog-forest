@@ -30,7 +30,7 @@ export class RoleGuard implements CanActivate {
 
     const request: Request = context.switchToHttp().getRequest();
     const cookies = request.cookies as Record<string, string | undefined>;
-    const token = cookies.refreshToken;
+    const token = cookies.accessToken;
 
     if (!token) {
       throw new UnauthorizedException('Токен не найден в cookie');

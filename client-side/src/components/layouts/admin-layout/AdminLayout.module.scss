@@ -13,14 +13,14 @@
       z-index: 49;
 
       @media (min-width: 1024px) {
-        padding-left: 16rem; // 64 = 16rem (1rem = 4px)
+        padding-left: 16rem;
       }
     }
 
     > .sidebar {
       display: none;
       height: 100%;
-      width: 16rem; // 64 = 16rem
+      width: 16rem;
       flex-direction: column;
       position: fixed;
       top: 0;
