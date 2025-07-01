@@ -18,11 +18,11 @@ export async function generateStaticParams() {
 	return paths
 }
 
-async function getProducts(params: { id: string }) {
+async function getProducts(id: string) {
 	try {
-		const product = await productService.getById(params.id)
+		const product = await productService.getById(id)
 
-		const similarProducts = await productService.getSimilar(params.id)
+		const similarProducts = await productService.getSimilar(id)
 
 		return { product, similarProducts }
 	} catch {
@@ -35,13 +35,14 @@ export default async function ProductPage({
 }: {
 	params: { id: string }
 }) {
-	const { product, similarProducts } = await getProducts(params)
+	const { id } = await Promise.resolve(params);
+	const { product, similarProducts } = await getProducts(id)
 
 	return (
 		<Product
 			initialProduct={product}
 			similarProducts={similarProducts}
-			id={params.id}
+			id={id}
 		/>
 	)
 }
