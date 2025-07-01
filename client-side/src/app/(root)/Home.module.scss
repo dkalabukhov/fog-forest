@@ -45,6 +45,22 @@
   margin: 0 auto;
 }
 
+.button_products {
+  margin-top: 1.5rem;
+  z-index: 2;
+  position: relative;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 1rem 2rem;
+  border-radius: 0;
+  transition: all 200ms;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 750px;
@@ -56,6 +72,10 @@
 
   .slogan {
     font-size: 1.8rem;
+  }
+
+  .button_products {
+    padding: 1.5rem 2.5rem;
   }
 }
 
@@ -70,21 +90,5 @@
 
   .slogan {
     font-size: 2.2rem
-  }
-}
-
-.button_products {
-  margin-top: 1.5rem;
-  z-index: 2;
-  position: relative;
-  color: #fff;
-  border: 1px solid #fff;
-  padding: 1.5rem 2.5rem;
-  border-radius: 0;
-  transition: all 200ms;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
   }
 }

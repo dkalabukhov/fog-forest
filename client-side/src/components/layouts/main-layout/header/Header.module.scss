@@ -62,7 +62,8 @@
 
       .logo {
         grid-area: logo;
-        justify-self: center;
+        justify-self: start;
+        margin-left: -2rem;
       }
 
       .headerMenu {

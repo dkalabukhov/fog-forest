@@ -17,11 +17,11 @@ export function Header() {
               <Logo />
             </div>
             <div className={styles.headerMenu}>
-              <HeaderMenu /> {/* Корзина теперь в основной группе */}
+              <HeaderMenu />
             </div>
           </div>
           <div className={styles.searchInput}>
-            <SearchInput /> {/* Поле поиска под группой */}
+            <SearchInput />
           </div>
         </nav>
       </div>
