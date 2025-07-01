@@ -251,9 +251,11 @@ export class ProductsService {
   async toggleProductsVisibility(dto: ToggleManyDto) {
     const { ids } = dto;
 
-    for (const id of ids) {
-      await this.getByIdIncludesHidden(id);
-    }
+    const products = await Promise.all(
+      ids.map((id) => this.getByIdIncludesHidden(id)),
+    );
+
+    const shouldEnable = products.some((product) => !product.isAvailable);
 
     return await this.prisma.product.updateMany({
       where: {
@@ -262,7 +264,7 @@ export class ProductsService {
         },
       },
       data: {
-        isAvailable: true,
+        isAvailable: shouldEnable,
       },
     });
   }
